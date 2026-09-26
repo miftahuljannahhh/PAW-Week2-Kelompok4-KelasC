@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implementasi Custom Chatbot GPT dengan Chatbase pada Website E-Commerce Sepatu</title>
+<style>
+  :root {
+    --primary: #1e3a5f;
+    --accent: #e8743b;
+    --bg-light: #f7f8fa;
+    --text: #2b2b2b;
+    --border: #dfe3e8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: #ffffff;
+  }
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header p.subtitle {
+    margin: 0;
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+  nav {
+    background: #16283d;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  nav a:hover { opacity: 1; text-decoration: underline; }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  section {
+    margin-bottom: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  section:first-of-type { border-top: none; }
+  h2 {
+    color: var(--primary);
+    border-left: 4px solid var(--accent);
+    padding-left: 0.6rem;
+    font-size: 1.3rem;
+  }
+  article {
+    background: var(--bg-light);
+    padding: 1.2rem 1.5rem;
+    border-radius: 6px;
+  }
+  article dl {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.4rem 1rem;
+    margin: 0 0 1rem 0;
+  }
+  article dt { font-weight: 600; color: var(--primary); }
+  article dd { margin: 0; }
+  ul.point-list {
+    padding-left: 1.2rem;
+  }
+  ul.point-list li {
+    margin-bottom: 0.6rem;
+  }
+  .strength { border-left: 4px solid #2e7d32; padding-left: 1rem; }
+  .weakness { border-left: 4px solid #c62828; padding-left: 1rem; }
+  table.members {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+  table.members th, table.members td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  table.members th {
+    background: var(--primary);
+    color: #fff;
+  }
+  aside {
+    background: #fff7ed;
+    border: 1px solid #f0dcc0;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  aside h3 { margin-top: 0; color: var(--accent); font-size: 1rem; }
+  footer {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+  footer p { margin: 0.2rem 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Implementasi Custom Chatbot GPT dengan Chatbase pada Website E-Commerce Sepatu</h1>
+  <p class="subtitle">Ringkasan Jurnal &mdash; JATI (Jurnal Mahasiswa Teknik Informatika), Vol. 9 No. 4, Agustus 2025</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#kekuatan">Kekuatan</a>
+  <a href="#kekurangan">Kekurangan</a>
+  <a href="#anggota">Anggota Kelompok</a>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>About / Ringkasan Jurnal</h2>
+    <article>
+      <dl>
+        <dt>Judul</dt>
+        <dd>Implementasi Custom Chatbot GPT dengan Chatbase pada Website E-Commerce Sepatu</dd>
+        <dt>Penulis</dt>
+        <dd>M. Alfin, Albert Ramadhan Manik, Muhammad Budi Akbar, Ririn Amelia Br Siregar, Adidtya Perdana</dd>
+        <dt>Asal Instansi</dt>
+        <dd>Ilmu Komputer, Universitas Negeri Medan</dd>
+        <dt>Tahun Terbit</dt>
+        <dd>Agustus 2025 &mdash; JATI Vol. 9 No. 4</dd>
+      </dl>
+      <p>
+        Jurnal ini membahas penerapan chatbot custom berbasis GPT yang dibangun melalui platform
+        Chatbase pada sebuah website e-commerce sepatu bernama <strong>Sepatuin</strong>. Tujuannya
+        adalah mengatasi keterbatasan chatbot konvensional yang sering gagal memahami konteks
+        percakapan, dengan memanfaatkan kemampuan GPT dalam menghasilkan respons yang lebih natural
+        dan relevan. Metode penelitian meliputi studi literatur, analisis kebutuhan, desain chatbot,
+        implementasi model GPT melalui Chatbase, serta pengujian menggunakan metode
+        <em>Black Box Testing</em>. Hasilnya, chatbot mampu menjawab pertanyaan pelanggan seputar
+        informasi produk, ketersediaan stok, harga, hingga proses pembelian secara cepat dan akurat,
+        sekaligus mengotomatisasi layanan pelanggan yang biasanya membutuhkan intervensi manusia.
+      </p>
+    </article>
+  </section>
+
+  <section id="kekuatan">
+    <h2>Kekuatan</h2>
+    <div class="strength">
+      <ul class="point-list">
+        <li><strong>Pengujian menyeluruh dan berhasil:</strong> Dengan metode Black Box Testing, seluruh 8 skenario pengujian (pertanyaan umum, spesifik produk, harga, data pribadi, produk tidak tersedia, transaksi, pertanyaan tak dikenal, dan input tidak valid) dinyatakan berhasil.</li>
+        <li><strong>Respons cepat dan kontekstual:</strong> Chatbot berbasis GPT mampu memahami konteks percakapan jauh lebih baik dibanding chatbot konvensional yang hanya mencocokkan kata kunci.</li>
+        <li><strong>Implementasi jelas dan terdokumentasi:</strong> Tahapan integrasi Chatbase ke website dijelaskan secara rinci mulai dari pembuatan agent, penyalinan kode konfigurasi, hingga penempatan widget di halaman website.</li>
+        <li><strong>Nilai tambah bagi bisnis:</strong> Chatbot mengotomatisasi layanan pelanggan (FAQ, cek stok, rekomendasi, hingga panduan transaksi) sehingga mengurangi ketergantungan pada tenaga manusia dan meningkatkan efisiensi operasional.</li>
+        <li><strong>Kepatuhan privasi:</strong> Dalam pengujian, chatbot merespons permintaan data pribadi sesuai kebijakan privasi yang diterapkan.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="kekurangan">
+    <h2>Kekurangan</h2>
+    <div class="weakness">
+      <ul class="point-list">
+        <li><strong>Belum ada rekomendasi alternatif otomatis:</strong> Saat produk yang ditanyakan tidak tersedia, chatbot hanya mengarahkan pengguna untuk mengecek katalog, belum memberikan rekomendasi produk alternatif secara otomatis.</li>
+        <li><strong>Belum diuji dengan pengguna nyata:</strong> Evaluasi hanya menggunakan Black Box Testing oleh peneliti; belum ada pengujian langsung dengan pengguna/pelanggan asli untuk mengukur efektivitas di dunia nyata.</li>
+        <li><strong>Pemahaman konteks kompleks masih terbatas:</strong> Penulis sendiri menyarankan pengembangan lanjutan agar chatbot dapat memahami percakapan dengan konteks yang lebih kompleks.</li>
+        <li><strong>Ketergantungan pada platform pihak ketiga:</strong> Karena berbasis Chatbase, performa dan keamanan chatbot bergantung pada layanan eksternal tersebut, bukan sistem yang dibangun sendiri.</li>
+        <li><strong>Ruang lingkup studi kasus terbatas:</strong> Penelitian hanya menguji pada satu website e-commerce sepatu (Sepatuin), sehingga generalisasi hasil ke jenis e-commerce lain masih perlu dikaji lebih lanjut.</li>
+      </ul>
+    </div>
+    <aside>
+      <h3>Catatan Referensi</h3>
+      <p>Penelitian ini merujuk pada studi sebelumnya oleh Sihite dkk. (2024) mengenai integrasi Chatbot Custom ChatGPT dengan Chatbase, namun dibedakan dengan fokus pada studi kasus e-commerce sepatu dan penggunaan metode Black Box Testing.</p>
+    </aside>
+  </section>
+
+  <section id="anggota">
+    <h2>Anggota Kelompok</h2>
+    <table class="members">
+      <thead>
+        <tr><th>Nama</th><th>NIM</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rara Andini Batrisyia</td><td>2020140152</td></tr>
+        <tr><td>Miftahul Jannah</td><td>2024140191</td></tr>
+        <tr><td>Beby Ayu Verananda</td><td>20240140246</td></tr>
+        <tr><td>Yusar Muhammad Fakhri</td><td>20250140127</td></tr>
+        <tr><td>Ahmad Fikri Riadi Rizki</td><td>20250140130</td></tr>
+        <tr><td>Muhammad Zidan Fathun Najja</td><td>20250140142</td></tr>
+        <tr><td>Ally Cahhyo Virmansyah</td><td>20250140147</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <p>Tugas Kelompok &mdash; Praktikum Pengembangan Aplikasi Web</p>
+  <p>Landing Page Semantic HTML dari Jurnal Pilihan</p>
+</footer>
+
+</body>
+</html>
