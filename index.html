@@ -4,136 +4,220 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Implementasi Custom Chatbot GPT dengan Chatbase pada Website E-Commerce Sepatu</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #1e3a5f;
-    --accent: #e8743b;
-    --bg-light: #f7f8fa;
-    --text: #2b2b2b;
-    --border: #dfe3e8;
+    --primary: #ff8fab;
+    --primary-light: #ffc2d1;
+    --accent: #fb6f92;
+    --bg-main: #fff0f3;
+    --bg-light: #ffffff;
+    --text-main: #590d22;
+    --text-muted: #a4133c;
+    --border: #ffe5ec;
+    --shadow: 0 10px 20px rgba(255, 143, 171, 0.15);
+    --radius: 16px;
   }
-  * { box-sizing: border-box; }
-  body {
+  * { 
+    box-sizing: border-box; 
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: var(--text);
-    line-height: 1.6;
-    background: #ffffff;
+    padding: 0;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    line-height: 1.7;
+    background: var(--bg-main);
   }
   header {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: #fff;
-    padding: 2.5rem 1.5rem;
+    padding: 4rem 1.5rem;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
   header h1 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
+    font-weight: 700;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 1rem auto;
+    line-height: 1.3;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
   header p.subtitle {
-    margin: 0;
-    opacity: 0.85;
-    font-size: 0.95rem;
+    opacity: 0.9;
+    font-size: 1.1rem;
+    font-weight: 300;
   }
   nav {
-    background: #16283d;
+    background: #ffffff;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1.5rem;
-    padding: 0.75rem 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
   nav a {
-    color: #fff;
+    color: var(--text-main);
     text-decoration: none;
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
   }
-  nav a:hover { opacity: 1; text-decoration: underline; }
+  nav a:hover { 
+    background: rgba(255, 143, 171, 0.1);
+    color: var(--primary);
+  }
+  .btn-home {
+    background: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 6px rgba(232, 116, 59, 0.2);
+  }
+  .btn-home:hover {
+    background: #cf622f !important;
+    transform: translateY(-2px);
+  }
   main {
     max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
   }
   section {
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    padding: 2.5rem;
     margin-bottom: 2.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.02);
+    transition: transform 0.3s ease;
   }
-  section:first-of-type { border-top: none; }
+  section:hover {
+    transform: translateY(-3px);
+  }
   h2 {
     color: var(--primary);
-    border-left: 4px solid var(--accent);
-    padding-left: 0.6rem;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background-color: var(--accent);
+    border-radius: 4px;
   }
   article {
-    background: var(--bg-light);
-    padding: 1.2rem 1.5rem;
-    border-radius: 6px;
+    color: var(--text-muted);
   }
   article dl {
     display: grid;
     grid-template-columns: 140px 1fr;
-    gap: 0.4rem 1rem;
-    margin: 0 0 1rem 0;
+    gap: 0.8rem 1.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-main);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
   }
-  article dt { font-weight: 600; color: var(--primary); }
-  article dd { margin: 0; }
+  article dt { 
+    font-weight: 600; 
+    color: var(--primary); 
+  }
+  article dd { 
+    margin: 0;
+    color: var(--text-main); 
+  }
   ul.point-list {
-    padding-left: 1.2rem;
+    padding-left: 1.5rem;
+    color: var(--text-muted);
   }
   ul.point-list li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
   }
-  .strength { border-left: 4px solid #2e7d32; padding-left: 1rem; }
-  .weakness { border-left: 4px solid #c62828; padding-left: 1rem; }
+  ul.point-list li strong {
+    color: var(--text-main);
+  }
+  .strength {
+    background: rgba(46, 125, 50, 0.05);
+    border-left: 4px solid #2e7d32; 
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .weakness { 
+    background: rgba(198, 40, 40, 0.05);
+    border-left: 4px solid #c62828; 
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+  }
   table.members {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   table.members th, table.members td {
-    border: 1px solid var(--border);
-    padding: 0.6rem 0.8rem;
+    padding: 1rem;
     text-align: left;
-    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
   }
   table.members th {
     background: var(--primary);
     color: #fff;
+    font-weight: 500;
+  }
+  table.members tr:last-child td {
+    border-bottom: none;
+  }
+  table.members tr:hover td {
+    background: rgba(30, 58, 95, 0.02);
   }
   aside {
     background: #fff7ed;
-    border: 1px solid #f0dcc0;
-    border-radius: 6px;
-    padding: 1rem 1.2rem;
-    font-size: 0.9rem;
-    margin-top: 1rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.5rem;
+    margin-top: 2rem;
   }
-  aside h3 { margin-top: 0; color: var(--accent); font-size: 1rem; }
+  aside h3 { 
+    margin-top: 0; 
+    color: var(--accent); 
+    font-size: 1.1rem; 
+    margin-bottom: 0.5rem;
+  }
   footer {
     background: var(--primary);
     color: #fff;
     text-align: center;
-    padding: 1.2rem 1rem;
-    font-size: 0.85rem;
-    margin-top: 2rem;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
   }
-  footer p { margin: 0.2rem 0; }
+  footer p { 
+    opacity: 0.8;
+    font-size: 0.9rem;
+  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>Implementasi Custom Chatbot GPT dengan Chatbase pada Website E-Commerce Sepatu</h1>
-  <p class="subtitle">Ringkasan Jurnal &mdash; JATI (Jurnal Mahasiswa Teknik Informatika), Vol. 9 No. 4, Agustus 2025</p>
 </header>
 
 <nav>
+  <a href="homepage.html" class="btn-home">🌍 Homepage</a>
   <a href="#about">About</a>
   <a href="#kekuatan">Kekuatan</a>
   <a href="#kekurangan">Kekurangan</a>
@@ -210,7 +294,7 @@
         <tr><td>Miftahul Jannah</td><td>20240140191</td></tr>
         <tr><td>Beby Ayu Verananda</td><td>20240140246</td></tr>
         <tr><td>Yusar Muhammad Fakhri</td><td>20250140127</td></tr>
-        <tr><td>Ahmad Fikri Riadi Rizki</td><td>20250140130</td></tr>
+        <tr><td>Ahmad Fitri Riadi Rizki</td><td>20250140130</td></tr>
         <tr><td>Muhammad Zidan Fathun Najja</td><td>20250140142</td></tr>
         <tr><td>Ally Cahhyo Virmansyah</td><td>20250140147</td></tr>
       </tbody>
@@ -221,7 +305,6 @@
 
 <footer>
   <p>Tugas Kelompok &mdash; Praktikum Pengembangan Aplikasi Web</p>
-  <p>Landing Page Semantic HTML dari Jurnal Pilihan</p>
 </footer>
 
 </body>
