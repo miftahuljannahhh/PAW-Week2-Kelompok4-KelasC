@@ -428,4 +428,15 @@ footer p {
     .hero {
         padding: 4rem 5%;
     }
+    /* nambah article dl, bagian grip-template-collumn, itu klo di hp px ny kegedean, skrng dikurangin*/
+    article dl {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 0.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-main);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
 }

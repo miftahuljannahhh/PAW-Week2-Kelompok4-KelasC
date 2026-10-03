@@ -134,6 +134,18 @@
     font-weight: 600; 
     color: var(--primary); 
   }
+ @media (max-width: 768px) {
+    article dl {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 0.8rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-main);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+  }
   article dd { 
     margin: 0;
     color: var(--text-main); 
