@@ -134,18 +134,6 @@
     font-weight: 600; 
     color: var(--primary); 
   }
- @media (max-width: 768px) {
-    article dl {
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      gap: 0.8rem 1.5rem;
-      margin-bottom: 1.5rem;
-      background: var(--bg-main);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
-    }
-  }
   article dd { 
     margin: 0;
     color: var(--text-main); 
@@ -220,6 +208,72 @@
     opacity: 0.8;
     font-size: 0.9rem;
   }
+
+
+  /* ########## style buat section contact-section ########### */
+  /* Styling Form dan Focus State (Ketentuan 4) */
+    .contact-section {
+        padding: 5rem 5%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: var(--white);
+        border-radius: var(--radius);
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        transition: var(--transition);
+    }
+
+    /* Focus State (Wajib untuk Ketentuan Nomor 4) */
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(251, 111, 146, 0.25);
+        background-color: var(--white);
+    }
+
+    /* tambahan bagian button biar ke blending sama style skrng*/
+    .contact-form button{
+      align-self: center;
+      background-color: var(--bg-light);
+      width: 50%;
+      border-color: var(--border);
+      border-radius: 8px;
+      height: 50px;
+      font-family: inherit;
+      color: var(--text-dark);
+    }
 </style>
 </head>
 <body>
@@ -311,6 +365,29 @@
         <tr><td>Ally Cahhyo Virmansyah</td><td>20250140147</td></tr>
       </tbody>
     </table>
+  </section>
+
+  <!-- Section Form dan Input (Ketentuan 4) -->
+  <section id="kontak" class="contact-section">
+      <div class="section-title">
+          <h2>Form Pemesanan & Pertanyaan</h2>
+          <p>Silakan isi form di bawah ini jika ingin memesan produk atau berkonsultasi.</p>
+      </div>
+      <form class="contact-form">
+          <div class="form-group">
+              <label for="nama">Nama Lengkap:</label>
+              <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required>
+          </div>
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+          </div>
+          <div class="form-group">
+              <label for="pesan">Pesan / Catatan:</label>
+              <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pesan atau ukuran sepatu..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Kirim Pesan</button>
+      </form>
   </section>
 
 </main>
